@@ -60,8 +60,8 @@ class WeatherContainer extends React.Component {
         const chosenViewType = WeatherContainer.getViewType(viewType);
         const chosenUnitType = WeatherContainer.getUnitType(unitType);
         const isDaily = chosenViewType === 'daily';
-        const dailyTemperature = weather[unitType][0] && weather[unitType][0].high;
-        const weeklyForecast = weather[unitType][0] && weather[unitType];
+        const dailyTemperature = weather[chosenUnitType][0] && weather[chosenUnitType][0].high;
+        const weeklyForecast = weather[chosenUnitType][0] && weather[chosenUnitType];
 
         return (
             <WeatherOverlay unitType={chosenUnitType}
