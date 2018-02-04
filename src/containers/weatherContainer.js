@@ -24,10 +24,12 @@ class WeatherContainer extends React.Component {
     }
 
     handleUnitClick(unit) {
+        localStorage.setItem('yahooWeatherUnit', unit);
         this.setState({unitType: unit});
     }
 
     handleViewTypeClick(viewType) {
+        localStorage.setItem('yahooWeatherViewType', viewType);
         this.setState({viewType});
     }
 
@@ -41,7 +43,9 @@ class WeatherContainer extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+    storageUnit: state.config
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchPosts: fetchPosts

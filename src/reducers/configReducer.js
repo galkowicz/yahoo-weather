@@ -1,14 +1,26 @@
 import {SET_CONFIG} from '../constants';
 
-const reducer = (state = {}, action) => {
+
+const reducer = (initialState = {}, action) => {
+
+    let state = Object.assign({}, initialState);
+
     switch (action.type) {
         case SET_CONFIG: {
-            return Object.assign({}, state, action.payload);
+            const {myStorage} = action.payload;
+
+            state = Object.assign({}, initialState,
+                {storageUnit: myStorage.yahooWeatherUnit || -1},
+                {storageViewType: myStorage.yahooWeatherViewType || ''});
+            console.log(state);
+            return state;
         }
 
         default:
-            return state;
+            state = initialState;
     }
+
+    return state;
 };
 
 export default reducer;

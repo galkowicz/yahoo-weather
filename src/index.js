@@ -9,7 +9,9 @@ import {SET_CONFIG} from './constants';
 
 import registerServiceWorker from './registerServiceWorker';
 
-store.dispatch({type: SET_CONFIG, payload: {}});
+let myStorage = window.localStorage;
+
+store.dispatch({type: SET_CONFIG, payload: {myStorage}});
 
 ReactDOM.render(
     <Provider store={store}>

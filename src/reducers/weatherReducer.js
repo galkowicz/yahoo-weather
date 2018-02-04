@@ -1,12 +1,12 @@
 import {REQUEST_WEATHER, RECEIVE_WEATHER} from '../constants';
 
-const reducer = (initialState = {}, action) => {
+const reducer = (initialState = {celsius: [], fahrenheit: []}, action) => {
 
-    let state = {celsius: [], fahrenheit: []};
+    let state;
 
     switch (action.type) {
         case REQUEST_WEATHER: {
-            return Object.assign({}, state, action.payload);
+            return Object.assign({}, initialState, action.payload);
         }
 
         case RECEIVE_WEATHER: {
