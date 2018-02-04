@@ -1,30 +1,47 @@
 import React from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import WeatherOverlay from '../components/weatherOverlay';
+import DailyView from '../components/dailyView';
+import WeeklyView from '../components/weatherOverlay';
 
 import {fetchPosts} from '../actions';
 
 class WeatherContainer extends React.Component {
     constructor(props) {
         super(props);
+        this.handleUnitClick = this.handleUnitClick.bind(this);
+        this.handleViewTypeClick = this.handleViewTypeClick.bind(this);
+        const {viewType, unitType} = this.props;
+
+        this.state = {viewType, unitType}
     }
 
     componentDidMount() {
-        const { fetchPosts, unit } = this.props;
-        fetchPosts(unit);
+        const {fetchPosts} = this.props;
+        fetchPosts('c');
+        fetchPosts('f');
+    }
+
+    handleUnitClick(unit) {
+        this.setState({unitType: unit});
+    }
+
+    handleViewTypeClick(viewType) {
+        this.setState({viewType});
     }
 
     render() {
-
         return (
-            <div></div>
+            <WeatherOverlay {...this.state}
+                            onUnitClick={this.handleUnitClick}
+                            onViewTypeClick={this.handleViewTypeClick}>
+            </WeatherOverlay>
         );
     }
 }
 
-const mapStateToProps = state => ({
-
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchPosts: fetchPosts

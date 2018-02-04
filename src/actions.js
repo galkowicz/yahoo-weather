@@ -4,12 +4,13 @@ const mapUnitToUrl = {
     c: TEL_AVIV_URL_IN_C,
     f: TEL_AVIV_URL_IN_F
 };
+
 export function fetchPosts(unit) {
     return dispatch => {
         dispatch(requestWeather(unit));
         return fetch(`${mapUnitToUrl[unit]}`)
             .then(response => response.json())
-            .then(json => dispatch(receiveWeather(json)))
+            .then(json => dispatch(receiveWeather(json, unit)))
     }
 }
 
@@ -20,11 +21,11 @@ function requestWeather(unit) {
     }
 }
 
-function receiveWeather(json) {
-    console.log(json.query.results); // json.query.results.channel.item.forecast
+function receiveWeather(json, unit) {
     return {
         type: RECEIVE_WEATHER,
         payload: json.query.results.channel.item.forecast,
-        receivedAt: Date.now()
+        receivedAt: Date.now(),
+        unit
     }
 }
