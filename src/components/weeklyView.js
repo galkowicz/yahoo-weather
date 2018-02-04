@@ -1,21 +1,22 @@
 import React from "react";
+import DailyView from './dailyView';
 
-import { Icon, Container, Menu, Segment } from 'semantic-ui-react';
-
-class DailyView extends React.Component {
+class WeeklyView extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        const {weatherUnits} = this.props;
+        const {temperatures} = this.props;
 
         return (
             <div className='daily-view'>
-                <span>{weatherUnits}</span>
+                {temperatures.map((day) => {
+                    return <DailyView {...day}/>
+                })}
             </div>
         );
     }
 }
 
-export default DailyView;
+export default WeeklyView;
