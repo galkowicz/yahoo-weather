@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Daily from '../src/components/dailyView';
+import WeatherContainer from '../src/containers/weatherContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-          <Daily />
+          <WeatherContainer unit={'c'} />
       </div>
     );
   }
