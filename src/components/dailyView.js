@@ -1,4 +1,6 @@
 import React from "react";
+import celsius from '../assets/celsius.svg';
+import fahrenheit from '../assets/fahrenheit.svg';
 
 class DailyView extends React.Component {
     constructor(props) {
@@ -7,14 +9,15 @@ class DailyView extends React.Component {
 
     render() {
         const {temperature, unitType} = this.props;
-        let unitSymbol = 'C';
+        let unitIcon = celsius;
 
         if (unitType === 'fahrenheit') {
-            unitSymbol = 'F';
+            unitIcon = fahrenheit;
         }
         return (
             <div className='daily-view'>
-                <span>{temperature}{unitSymbol}</span>
+                <span className='daily-view__text'>{temperature}</span>
+                <img className='unit-icon' src={unitIcon} alt=""/>
             </div>
         );
     }

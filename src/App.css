@@ -8,3 +8,19 @@
   padding: 1rem; }
   .buttons .selected {
     background-color: aquamarine !important; }
+
+.unit-icon {
+  width: 2rem;
+  margin-left: 0.5rem; }
+
+.daily-view {
+  display: flex;
+  justify-content: center; }
+  .daily-view__text {
+    align-self: center; }
+
+.weather-item__temperature {
+  align-self: center; }
+
+.weather-item .header {
+  padding-bottom: 1rem; }

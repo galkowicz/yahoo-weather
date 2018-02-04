@@ -1,4 +1,7 @@
 import React from "react";
+import {List, Image} from 'semantic-ui-react';
+import celsius from '../assets/celsius.svg';
+import fahrenheit from '../assets/fahrenheit.svg';
 
 class WeeklyView extends React.Component {
     constructor(props) {
@@ -7,25 +10,25 @@ class WeeklyView extends React.Component {
 
     render() {
         const {forecast, unitType} = this.props;
-        let unitSymbol = 'C';
+        let unitIcon = celsius;
 
         if (unitType === 'fahrenheit') {
-            unitSymbol = 'F';
+            unitIcon = fahrenheit;
         }
 
         return (
             <div className='daily-view'>
-                <ul>
+                <List horizontal>
                     {forecast && forecast.map((item) => {
-                        return <li key={item.date}>
-                            <div className='weather-item'>
-                                <span className='weather-item__day'>{item.day}</span>
+                        return <List.Item className='weather-item' key={item.date}>
+                            <List.Content>
+                                <List.Header>{item.day}</List.Header>
                                 <span className='weather-item__temperature'>{item.high}</span>
-                                <span className='weather-item__unit'>{unitSymbol}</span>
-                            </div>
-                        </li>
+                                <Image avatar className='unit-icon' src={unitIcon} alt=""/>
+                            </List.Content>
+                        </List.Item>
                     })}
-                </ul>
+                </List>
             </div>
         );
     }

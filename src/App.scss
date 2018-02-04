@@ -1,12 +1,36 @@
 .App {
   text-align: center;
 }
+
 .header-title {
   padding: 1rem;
 }
+
 .buttons {
   padding: 1rem;
   .selected {
     background-color: aquamarine !important;
+  }
+}
+
+.unit-icon {
+  width: 2rem;
+  margin-left: 0.5rem
+}
+
+.daily-view {
+  display: flex;
+  justify-content: center;
+  &__text {
+    align-self: center;
+  }
+}
+
+.weather-item {
+  &__temperature {
+    align-self: center
+  }
+  .header {
+    padding-bottom: 1rem;
   }
 }

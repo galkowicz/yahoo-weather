@@ -16,7 +16,9 @@ class WeatherOverlay extends React.Component {
         return (
             <div className='weather-overlay'>
                 <div className="header">
-                    <div className='header-title'><h1>Amazing Weather Widget</h1></div>
+                    <div className='header-title'><h1>Amazing Weather Widget</h1>
+                        <h2>Tel Aviv</h2>
+                    </div>
                     <Button.Group size='large'>
                         <Button onClick={() => {
                             onUnitClick('celsius')
