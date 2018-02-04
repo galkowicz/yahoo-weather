@@ -5,16 +5,13 @@ import WeatherOverlay from '../components/weatherOverlay';
 import DailyView from '../components/dailyView';
 import WeeklyView from '../components/weeklyView';
 
-import {fetchPosts} from '../actions';
+import {fetchPosts, setConfigUnit, setConfigViewTypeUnit} from '../actions';
 
 class WeatherContainer extends React.Component {
     constructor(props) {
         super(props);
         this.handleUnitClick = this.handleUnitClick.bind(this);
         this.handleViewTypeClick = this.handleViewTypeClick.bind(this);
-        const {storageUnit, storageViewType} = this.props;
-
-        this.state = {viewType: storageViewType, unitType: storageUnit}
     }
 
     componentDidMount() {
@@ -25,12 +22,12 @@ class WeatherContainer extends React.Component {
 
     handleUnitClick(unit) {
         localStorage.setItem('yahooWeatherUnit', unit);
-        this.setState({unitType: unit});
+        this.props.setConfigUnit(unit);
     }
 
     handleViewTypeClick(viewType) {
         localStorage.setItem('yahooWeatherViewType', viewType);
-        this.setState({viewType});
+        this.props.setConfigViewTypeUnit(viewType);
     }
 
     static getViewType(viewType) {
@@ -54,8 +51,7 @@ class WeatherContainer extends React.Component {
     }
 
     render() {
-        const {weather = {}} = this.props;
-        const {unitType, viewType} = this.state;
+        const {weather = {}, unitType, viewType} = this.props;
 
         const chosenViewType = WeatherContainer.getViewType(viewType);
         const chosenUnitType = WeatherContainer.getUnitType(unitType);
@@ -76,13 +72,15 @@ class WeatherContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    storageUnit: state.config.storageUnit,
-    storageViewType: state.config.storageViewType,
+    unitType: state.config.unitType,
+    viewType: state.config.viewType,
     weather: state.weather
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    fetchPosts: fetchPosts
+    fetchPosts: fetchPosts,
+    setConfigUnit: setConfigUnit,
+    setConfigViewTypeUnit: setConfigViewTypeUnit
 }, dispatch);
 
 export default connect(

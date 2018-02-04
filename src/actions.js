@@ -1,4 +1,9 @@
-import {TEL_AVIV_URL_IN_C, TEL_AVIV_URL_IN_F, REQUEST_WEATHER, RECEIVE_WEATHER} from './constants';
+import {TEL_AVIV_URL_IN_C,
+    TEL_AVIV_URL_IN_F,
+    REQUEST_WEATHER,
+    RECEIVE_WEATHER,
+    SET_CONFIG_UNIT,
+    SET_CONFIG_VIEW_TYPE} from './constants';
 
 const mapUnitToUrl = {
     celsius: TEL_AVIV_URL_IN_C,
@@ -27,5 +32,18 @@ function receiveWeather(json, unit) {
         payload: json.query.results.channel.item.forecast,
         receivedAt: Date.now(),
         unit
+    }
+}
+
+export function setConfigUnit(unit) {
+    return {
+        type: SET_CONFIG_UNIT,
+        payload: unit
+    }
+}
+export function setConfigViewTypeUnit(viewType) {
+    return {
+        type: SET_CONFIG_VIEW_TYPE,
+        payload: viewType
     }
 }

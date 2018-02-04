@@ -7,7 +7,6 @@ class WeatherOverlay extends React.Component {
         this.state = {};
     }
 
-
     render() {
         const {viewType, unitType, onUnitClick, onViewTypeClick} = this.props;
         const isCelsius = unitType === 'celsius';

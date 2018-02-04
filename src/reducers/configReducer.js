@@ -1,4 +1,4 @@
-import {SET_CONFIG} from '../constants';
+import {SET_CONFIG, SET_CONFIG_UNIT, SET_CONFIG_VIEW_TYPE} from '../constants';
 
 
 const reducer = (initialState = {}, action) => {
@@ -10,8 +10,24 @@ const reducer = (initialState = {}, action) => {
             const {myStorage} = action.payload;
 
             state = Object.assign({}, initialState,
-                {storageUnit: myStorage.yahooWeatherUnit || ''},
-                {storageViewType: myStorage.yahooWeatherViewType || ''});
+                {unitType: myStorage.yahooWeatherUnit || ''},
+                {viewType: myStorage.yahooWeatherViewType || ''});
+
+            return state;
+        }
+
+        case SET_CONFIG_UNIT: {
+
+            state = Object.assign({}, initialState,
+                {unitType: action.payload});
+
+            return state;
+        }
+
+        case SET_CONFIG_VIEW_TYPE: {
+
+            state = Object.assign({}, initialState,
+                {viewType: action.payload});
 
             return state;
         }
