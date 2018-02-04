@@ -1,8 +1,8 @@
 import {TEL_AVIV_URL_IN_C, TEL_AVIV_URL_IN_F, REQUEST_WEATHER, RECEIVE_WEATHER} from './constants';
 
 const mapUnitToUrl = {
-    c: TEL_AVIV_URL_IN_C,
-    f: TEL_AVIV_URL_IN_F
+    celsius: TEL_AVIV_URL_IN_C,
+    fahrenheit: TEL_AVIV_URL_IN_F
 };
 
 export function fetchPosts(unit) {

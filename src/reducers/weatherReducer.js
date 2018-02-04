@@ -12,7 +12,7 @@ const reducer = (initialState = {celsius: [], fahrenheit: []}, action) => {
         case RECEIVE_WEATHER: {
             const unit =  action.unit;
 
-            if (unit === 'c') {
+            if (unit === 'celsius') {
                 state = Object.assign({}, initialState, {celsius: action.payload})
             } else {
                 state = Object.assign({}, initialState, {fahrenheit: action.payload})

@@ -10,9 +10,9 @@ const reducer = (initialState = {}, action) => {
             const {myStorage} = action.payload;
 
             state = Object.assign({}, initialState,
-                {storageUnit: myStorage.yahooWeatherUnit || -1},
+                {storageUnit: myStorage.yahooWeatherUnit || ''},
                 {storageViewType: myStorage.yahooWeatherViewType || ''});
-            console.log(state);
+
             return state;
         }
 

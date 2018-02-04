@@ -1,5 +1,4 @@
 import React from "react";
-import DailyView from './dailyView';
 
 class WeeklyView extends React.Component {
     constructor(props) {
@@ -7,13 +6,26 @@ class WeeklyView extends React.Component {
     }
 
     render() {
-        const {temperatures} = this.props;
+        const {forecast, unitType} = this.props;
+        let unitSymbol = 'C';
+
+        if (unitType === 'fahrenheit') {
+            unitSymbol = 'F';
+        }
 
         return (
             <div className='daily-view'>
-                {temperatures.map((day) => {
-                    return <DailyView {...day}/>
-                })}
+                <ul>
+                    {forecast && forecast.map((item) => {
+                        return <li key={item.date}>
+                            <div className='weather-item'>
+                                <span className='weather-item__day'>{item.day}</span>
+                                <span className='weather-item__temperature'>{item.high}</span>
+                                <span className='weather-item__unit'>{unitSymbol}</span>
+                            </div>
+                        </li>
+                    })}
+                </ul>
             </div>
         );
     }

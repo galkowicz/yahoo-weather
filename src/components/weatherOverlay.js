@@ -10,8 +10,8 @@ class WeatherOverlay extends React.Component {
 
     render() {
         const {viewType, unitType, onUnitClick, onViewTypeClick} = this.props;
-        const isCelsius = viewType === 'c';
-        const isDaily = unitType === 'daily';
+        const isCelsius = unitType === 'celsius';
+        const isDaily = viewType === 'daily';
 
         return (
             <div className='weather-overlay'>
@@ -19,11 +19,11 @@ class WeatherOverlay extends React.Component {
                     <div className='header-title'><h1>Amazing Weather Widget</h1></div>
                     <Button.Group size='large'>
                         <Button onClick={() => {
-                            onUnitClick('c')
+                            onUnitClick('celsius')
                         }} className={isCelsius ? 'selected' : ''}>Celsius</Button>
                         <Button.Or/>
                         <Button onClick={() => {
-                            onUnitClick('f')
+                            onUnitClick('fahrenheit')
                         }}
                                 className={isCelsius ? '' : 'selected'}>Fahrenheit</Button>
                     </Button.Group>

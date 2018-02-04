@@ -6,11 +6,15 @@ class DailyView extends React.Component {
     }
 
     render() {
-        const {temperature, unit} = this.props;
+        const {temperature, unitType} = this.props;
+        let unitSymbol = 'C';
 
+        if (unitType === 'fahrenheit') {
+            unitSymbol = 'F';
+        }
         return (
             <div className='daily-view'>
-                <span>{unit}{temperature}</span>
+                <span>{temperature}{unitSymbol}</span>
             </div>
         );
     }
